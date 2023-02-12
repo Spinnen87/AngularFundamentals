@@ -1,4 +1,4 @@
-<div class="app-button" [class.app-button__single-icon]="icon && !caption" (click)="onClick($event)">
+<div class="app-button" [class.app-button__single-icon]="icon && !caption">
   <fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
   <span *ngIf="caption">{{caption}}</span>
 </div>
