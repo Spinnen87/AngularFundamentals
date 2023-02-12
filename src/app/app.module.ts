@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import {CoursesModuleModule} from "./courses-module/courses-module.module";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,8 @@ import {CoursesModuleModule} from "./courses-module/courses-module.module";
   ],
   imports: [
     BrowserModule,
-    CoursesModuleModule
+    CoursesModuleModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
