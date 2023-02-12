@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {CoursesModuleModule} from "./courses-module/courses-module.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {SharedModule} from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     BrowserModule,
     CoursesModuleModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

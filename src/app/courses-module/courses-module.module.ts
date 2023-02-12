@@ -12,7 +12,7 @@ import { CoursesComponent } from '../features/courses/courses.component';
     SharedModule,
   ],
   exports: [
-    CoursesComponent
+    CoursesComponent,
   ]
 })
 export class CoursesModuleModule { }
