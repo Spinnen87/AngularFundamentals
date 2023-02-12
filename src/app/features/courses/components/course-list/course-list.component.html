@@ -1,7 +1,12 @@
 <div class="course-list">
-  <div *ngFor="let course of courses">
-    <app-course-card [card]="course" [editable]="editable">
-      <app-button icon="trash" (click)="onDelete(course.id)"></app-button>
-    </app-course-card>
-  </div>
+  <ng-container *ngIf="courses?.length">
+    <div *ngFor="let course of courses">
+      <app-course-card [card]="course" [editable]="editable">
+        <app-button icon="trash" (click)="onDelete(course.id)"></app-button>
+      </app-course-card>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!courses?.length">
+    <app-info title="Your List Is Empty"></app-info>
+  </ng-container>
 </div>
