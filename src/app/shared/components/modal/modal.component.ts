@@ -23,15 +23,22 @@ export class ModalComponent {
     library.addIconPacks(fas);
   }
 
+  hideModal() {
+    this.isVisible = false;
+    this.isVisibleChange.emit(false);
+  }
+
   onConfirm() {
     this.outputResult.emit(true);
-    this.isVisibleChange.emit(false);
+    this.hideModal();
   }
 
   onCancel() {
     this.outputResult.emit(false);
-    this.isVisibleChange.emit(false);
+    this.hideModal();
   }
+
+
 
 }
 
