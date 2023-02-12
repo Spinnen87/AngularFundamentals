@@ -1,20 +1,22 @@
 <div class="course-card">
     <div class="course-card__description">
-      <!-- Replace ::text:: with your code -->
-      <div class="course-card__description-title">::Title::</div>
-      <div class="course-card__description-text">::Description::</div>
+      <div class="course-card__description-title">{{card.title}}</div>
+      <div class="course-card__description-text">{{card.description}}</div>
     </div>
     <div class="course-card__info">
         <div class="course-card__info-text">
             <div>
               <b>Authors: </b>
-              ::Authors::
+              {{card.authors}}
             </div>
-            <div><b>Duration: </b>::Duration::</div>
-            <div><b>Created: </b>::Creation Date::</div>
+            <div><b>Duration: </b>{{duration}} hours</div>
+            <div><b>Created: </b>{{card.creationDate}}</div>
         </div>
         <div class="course-card__info-actions">
-            <app-button></app-button>
+            <app-button caption="Show Course"></app-button>
+            <app-button *ngIf="editable" icon="trash"></app-button>
+            <app-button *ngIf="editable" icon="edit"></app-button>
+            <ng-content></ng-content>
         </div>
     </div>
 </div>
