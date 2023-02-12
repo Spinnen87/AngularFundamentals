@@ -1,6 +1,14 @@
 <app-header>
-  <div>Harry Potter</div>
   <app-button icon="user" caption="Login"></app-button>
-  <app-button icon="user"></app-button>
+  <app-button icon="question" (click)="showConfirmModal()"></app-button>
 </app-header>
 <app-courses></app-courses>
+
+<app-modal
+  [(isVisible)]="isShowConfirmModal"
+  (outputResult)="inputChange($event)"
+  cancelButtonText="Cancel"
+  message="Are you sure?"
+  okButtonText="Ok"
+  title="Test confirm Modal"
+></app-modal>

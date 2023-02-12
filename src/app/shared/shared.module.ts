@@ -10,7 +10,8 @@ import {
   CourseCardComponent,
   LoginFormComponent,
   RegistrationFormComponent,
-  CourseFormComponent
+  CourseFormComponent,
+  ModalComponent
 } from "./components";
 
 const components = [
@@ -21,7 +22,8 @@ const components = [
   CourseCardComponent,
   LoginFormComponent,
   RegistrationFormComponent,
-  CourseFormComponent
+  CourseFormComponent,
+  ModalComponent
 ];
 
 @NgModule({
