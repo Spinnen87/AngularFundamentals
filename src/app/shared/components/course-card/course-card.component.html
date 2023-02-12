@@ -14,6 +14,7 @@
         </div>
         <div class="course-card__info-actions">
             <app-button caption="Show Course"></app-button>
+            <app-button *ngIf="editable" icon="edit"></app-button>
             <ng-content></ng-content>
         </div>
     </div>
