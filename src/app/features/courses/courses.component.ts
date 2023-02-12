@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Card} from "../../models/card";
 
 @Component({
@@ -31,7 +31,7 @@ export class CoursesComponent {
       authors: ["Anna Sidorenko", "Valentina Larina"],
     },
     {
-      id: "b5630fdd-7bf7-4d39-b75a-2b5906fd0916",
+      id: "b5630fdd-7bf7-4d39-b75a-2b5906fd09162",
       title: "Angular",
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                     has been the industry's standard dummy text ever since the 1500s, when an unknown
@@ -41,4 +41,9 @@ export class CoursesComponent {
       authors: ["Anna Sidorenko", "Valentina Larina"],
     },
   ];
+
+  deleteItem(id: string) {
+    this.mockedCourseList = this.mockedCourseList.filter(card => card.id !== id);
+  }
+
 }

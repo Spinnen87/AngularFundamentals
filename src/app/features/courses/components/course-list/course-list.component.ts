@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Card} from "../../../../models/card";
 
 @Component({
@@ -9,4 +9,10 @@ import {Card} from "../../../../models/card";
 export class CourseListComponent {
   @Input() courses: Card[] | undefined;
   @Input() editable: boolean = false;
+  @Output() deleteCourse = new EventEmitter<string>()
+
+  onDelete(id: string) {
+    this.deleteCourse.emit(id);
+  }
+
 }
