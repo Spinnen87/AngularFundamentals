@@ -23,7 +23,7 @@ export class ModalComponent {
     library.addIconPacks(fas);
   }
 
-  hideModal() {
+  private hideModal() {
     this.isVisible = false;
     this.isVisibleChange.emit(false);
   }
