@@ -8,7 +8,7 @@ import { RegistrationComponent } from './features/registration/registration.comp
 import { CourseComponent } from './features/course/course.component';
 import {CoursesComponent} from "./features/courses/courses.component";
 import { CourseListComponent } from './features/courses/components/course-list/course-list.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import {FormsModule} from "@angular/forms";
         FontAwesomeModule,
         SharedModule,
         FormsModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent],

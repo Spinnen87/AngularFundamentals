@@ -1,1 +1,57 @@
-<p>registration works!</p>
+<h1 style="text-align: center">Registration</h1>
+
+<form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+  <div class="login-form">
+    <div class="form-field">
+      <label for="email">Name</label>
+      <input
+        [class.ng-valid]="!(userName?.dirty || userName?.touched)"
+        id="name"
+        formControlName="userName"
+        placeholder="Please input name"
+        type="text"
+      >
+      <span class="error" *ngIf="userName?.errors?.['required'] && (userName?.dirty || userName?.touched)">Name is
+        required</span>
+      <span class="error" *ngIf="userName?.errors?.['minlength'] && (userName?.dirty || userName?.touched)">Name shouldn't
+        be less than 6 symbols</span>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input
+        [class.ng-valid]="!(email?.dirty || email?.touched)"
+        id="email"
+        formControlName="email"
+        placeholder="Please input email"
+        type="text"
+      >
+      <span class="error" *ngIf="email?.errors?.['required'] && (email?.dirty || email?.touched)">Email is
+        required</span>
+      <span class="error"
+            *ngIf="!email?.errors?.['required'] && email?.errors?.['forbiddenEmail'] && (email?.dirty ||
+            email?.touched)">Email is
+        forbidden</span>
+    </div>
+
+    <div class="form-field">
+      <label for="password">Password</label>
+      <input
+        [class.ng-valid]="!(password?.dirty || password?.touched)"
+        id="password"
+        formControlName="password"
+        placeholder="Please input password"
+        type="text"
+      >
+      <span class="error" *ngIf="password?.errors?.['required'] && (password?.dirty || password?.touched)">Password is
+        required</span>
+    </div>
+
+    <app-button caption="Registration" type="submit"></app-button>
+
+    <div style="text-align: center">
+      If you have an account you may <strong>Login</strong>
+    </div>
+
+  </div>
+</form>

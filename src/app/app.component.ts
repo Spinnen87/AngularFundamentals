@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-type View = 'login' | 'courses';
+type View = 'login' | 'courses' | 'registration';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ type View = 'login' | 'courses';
 export class AppComponent {
   title = 'Angular Fundamentals';
   isShowConfirmModal:boolean = false;
-  view: View = 'login';
+  view: View = 'registration';
 
   showConfirmModal(){
     this.isShowConfirmModal = !this.isShowConfirmModal;
