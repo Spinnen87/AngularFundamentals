@@ -1,8 +1,17 @@
-<app-header>
-  <app-button icon="user" caption="Login"></app-button>
-  <app-button icon="question" (click)="showConfirmModal()"></app-button>
-</app-header>
-<app-courses></app-courses>
+<div class="header">
+  <app-header>
+    <app-button icon="user" caption="Login" (click)="changeView('login')"></app-button>
+    <app-button icon="question" (click)="showConfirmModal()"></app-button>
+  </app-header>
+</div>
+
+<div class="container">
+  <ng-container [ngSwitch]="view">
+    <app-courses *ngSwitchCase="'courses'"></app-courses>
+    <app-login *ngSwitchCase="'login'"></app-login>
+  </ng-container>
+</div>
+
 
 <app-modal
   [(isVisible)]="isShowConfirmModal"

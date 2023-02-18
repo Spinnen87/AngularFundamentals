@@ -10,16 +10,24 @@
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
+    appearance: none;
+    border: none;
 
     &:hover {
         background: #016486;
     }
 
     &:focus {
-      background: #016486;
+      outline: none;
+      box-shadow: 0 0 0 2px #4db0d0;
     }
 
     &__single-icon {
         padding: 13px;
     }
+}
+.app-button[disabled]{
+  color: #d2d5db;
+  background: #6c7589;
+  cursor: not-allowed;
 }

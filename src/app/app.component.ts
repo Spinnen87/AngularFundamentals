@@ -1,4 +1,6 @@
-import { Component, VERSION } from '@angular/core';
+import { Component } from '@angular/core';
+
+type View = 'login' | 'courses';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import { Component, VERSION } from '@angular/core';
 export class AppComponent {
   title = 'Angular Fundamentals';
   isShowConfirmModal:boolean = false;
+  view: View = 'login';
 
   showConfirmModal(){
     this.isShowConfirmModal = !this.isShowConfirmModal;
@@ -15,5 +18,9 @@ export class AppComponent {
 
   inputChange(data: boolean) {
     console.log('Modal data results ', data)
+  }
+
+  changeView(v: View) {
+    this.view = v;
   }
 }

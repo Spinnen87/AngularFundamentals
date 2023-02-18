@@ -1,4 +1,4 @@
-<div class="app-button" [class.app-button__single-icon]="icon && !caption">
+<button class="app-button" [class.app-button__single-icon]="icon && !caption" [disabled]="disabled"  [type]="type">
   <fa-icon *ngIf="icon" [icon]="icon"></fa-icon>
   <span *ngIf="caption">{{caption}}</span>
-</div>
+</button>

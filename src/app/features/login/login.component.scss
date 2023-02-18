@@ -1,0 +1,32 @@
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background: #FFFFFF;
+  border: 1px solid #CFCFCF;
+  border-radius: 4px;
+  padding: 50px 100px;
+
+}
+
+.error {
+  margin-top: 6px;
+  color: #FF0000;
+;
+}
+
+.form-field {
+  width: 300px;
+}
+
+.ng-invalid{
+  border-color: #FF0000;
+}
+
+.ng-valid{
+  border-color: #CFCFCF;
+}
+
+

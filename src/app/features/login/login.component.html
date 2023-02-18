@@ -1,1 +1,49 @@
-<p>login works!</p>
+<h1 style="text-align: center">Login</h1>
+
+<form #formLogin="ngForm" (ngSubmit)="onFormSubmit(formLogin)">
+  <div class="login-form">
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input
+          [class.ng-valid]="!(email.dirty || email.touched) && !formLogin.submitted"
+          name="email"
+          id="email"
+          placeholder="Please input email"
+          type="text"
+          #email="ngModel"
+          [(ngModel)]="userEmail"
+          required
+          appCustomEmailValidator
+      >
+      <span class="error" *ngIf="email.errors?.['required'] && (email.dirty || email.touched || formLogin.submitted)">Email is
+        required</span>
+      <span class="error" *ngIf="!email.errors?.['required'] && email.errors?.['forbiddenEmail'] && (email.dirty ||
+      email.touched || formLogin.submitted)">Incorrect email</span>
+    </div>
+
+    <div class="form-field">
+      <label for="password">Password</label>
+      <input
+        [class.ng-valid]="!(password.dirty || password.touched) && !formLogin.submitted"
+        name="password"
+        id="password"
+        placeholder="Please input password"
+        type="text"
+        #password="ngModel"
+        [(ngModel)]="userPassword"
+        required
+      >
+      <span class="error" *ngIf="password.errors?.['required'] && (password.dirty || password.touched || formLogin.submitted)">Password is
+        required</span>
+    </div>
+
+    <app-button caption="Login" type="submit"></app-button>
+
+    <div style="text-align: center">
+      If you don't have an account you may
+      <br>
+      <strong>Registration</strong>
+    </div>
+
+  </div>
+</form>
