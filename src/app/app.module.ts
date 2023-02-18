@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -8,6 +8,7 @@ import { RegistrationComponent } from './features/registration/registration.comp
 import { CourseComponent } from './features/course/course.component';
 import {CoursesComponent} from "./features/courses/courses.component";
 import { CourseListComponent } from './features/courses/components/course-list/course-list.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,12 +19,14 @@ import { CourseListComponent } from './features/courses/components/course-list/c
     CoursesComponent,
     CourseListComponent
   ],
-  imports: [
-    BrowserModule,
-    FontAwesomeModule,
-    SharedModule,
-  ],
+    imports: [
+        BrowserModule,
+        FontAwesomeModule,
+        SharedModule,
+        FormsModule,
+    ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

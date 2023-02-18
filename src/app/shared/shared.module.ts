@@ -13,6 +13,7 @@ import {
   CourseFormComponent,
   ModalComponent
 } from "./components";
+import { CustomEmailValidatorDirective } from './directives/custom-email-validator.directive';
 
 const components = [
   HeaderComponent,
@@ -27,13 +28,13 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, CustomEmailValidatorDirective],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule
   ],
-  exports: [components]
+  exports: [components, CustomEmailValidatorDirective]
 })
 export class SharedModule { }
