@@ -37,7 +37,6 @@ export class RegistrationComponent {
   }
 
   onFormSubmit() {
-    console.log('this.userName?.errors -', this.userName?.errors)
     this.form.markAllAsTouched()
     console.log(JSON.stringify(this.form.value, null, 2));
   }

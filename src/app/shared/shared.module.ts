@@ -14,6 +14,7 @@ import {
   ModalComponent
 } from "./components";
 import { CustomEmailValidatorDirective } from './directives/custom-email-validator.directive';
+import { DurationPipe } from './pipes/duration.pipe';
 
 const components = [
   HeaderComponent,
@@ -28,13 +29,13 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, CustomEmailValidatorDirective],
+  declarations: [components, CustomEmailValidatorDirective, DurationPipe],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule
   ],
-  exports: [components, CustomEmailValidatorDirective]
+  exports: [components, CustomEmailValidatorDirective, DurationPipe]
 })
 export class SharedModule { }

@@ -35,3 +35,26 @@
     cursor: pointer;
   }
 }
+
+.form {
+  &__control {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+
+}
+
+.ng-invalid {
+  border-color: #FF0000;
+}
+
+.ng-valid{
+  border-color: #cfcfcf;
+}
+
+.error {
+  margin-top: 6px;
+  color: #FF0000;
+}

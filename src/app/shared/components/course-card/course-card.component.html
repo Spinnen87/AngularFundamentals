@@ -9,7 +9,7 @@
               <b>Authors: </b>
               {{card.authors}}
             </div>
-            <div><b>Duration: </b>{{duration}} hours</div>
+            <div><b>Duration: </b>{{card.duration | durationPipe}} hours</div>
             <div><b>Created: </b>{{card.creationDate}}</div>
         </div>
         <div class="course-card__info-actions">
