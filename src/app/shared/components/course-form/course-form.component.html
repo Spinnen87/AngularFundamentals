@@ -68,7 +68,7 @@
 
 
           <div class="course__duration">
-            {{duration?.value | durationPipe}} hours
+            <strong>{{duration?.value | durationPipe}}</strong> hours
           </div>
         </div>
         <span class="error" *ngIf="duration?.errors?.['required'] && (duration?.dirty || duration?.touched)">Duration is

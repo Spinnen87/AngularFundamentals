@@ -10,7 +10,7 @@
               {{card.authors}}
             </div>
             <div><b>Duration: </b>{{card.duration | durationPipe}} hours</div>
-            <div><b>Created: </b>{{card.creationDate}}</div>
+            <div><b>Created: </b>{{card.creationDate | creationDatePipe}}</div>
         </div>
         <div class="course-card__info-actions">
             <app-button caption="Show Course"></app-button>
