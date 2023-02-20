@@ -24,6 +24,8 @@
   &__authors {
     margin-top: 8px;
     display: flex;
+    align-items: center;
+    gap: 6px;
 
     &-item {
       margin-right: 10px;
@@ -42,9 +44,9 @@
     flex-direction: column;
     gap: 3px;
   }
-
-
 }
+
+
 
 .ng-invalid {
   border-color: #FF0000;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder,  Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,9 +18,7 @@ export class CourseFormComponent {
       Validators.required,
     ]],
     newAuthor: ['', [Validators.pattern(/^[A-Za-z0-9]+$/)]],
-    authors: this.fb.array([
-      this.fb.control('')
-    ]),
+    authors: this.fb.array([]),
     duration: [0, [
       Validators.required,
       Validators.min(0)
@@ -47,7 +45,7 @@ export class CourseFormComponent {
   }
 
   get authors() {
-    return this.form.get('authors')?.value;
+    return this.form.controls["authors"] as FormArray;
   }
 
   get newAuthor(){
@@ -56,11 +54,18 @@ export class CourseFormComponent {
 
 
   addAuthor(){
-    const newAuthor = this.form.get('newAuthor')?.value;
-    if (newAuthor) {
-      console.log(newAuthor)
+    const newAuthorValue = this.form.get('newAuthor')?.value;
+    if (newAuthorValue) {
+      const newAuthor = new FormControl(newAuthorValue);
+      this.authors.push(newAuthor);
+      this.newAuthor?.setValue('');
     }
   }
+
+  deleteAuthor(index: number){
+    this.authors.removeAt(index);
+  }
+
 
   onFormSubmit(){
     console.log(JSON.stringify(this.form.value, null, 2));
