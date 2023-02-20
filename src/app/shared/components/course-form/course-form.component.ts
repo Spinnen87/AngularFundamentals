@@ -39,9 +39,7 @@ export class CourseFormComponent {
   }
 
   get duration() {
-    const d = this.form.get('duration');
-    console.log('d ', d)
-    return d;
+    return this.form.get('duration');
   }
 
   get authors() {
