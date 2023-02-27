@@ -8,12 +8,11 @@
 </div>
 
 <div class="container">
-  <ng-container [ngSwitch]="view">
-    <app-courses *ngSwitchCase="'courses'"></app-courses>
-    <app-login *ngSwitchCase="'login'"></app-login>
-    <app-registration *ngSwitchCase="'registration'"></app-registration>
-    <app-course-form *ngSwitchCase="'editCourse'"></app-course-form>
-  </ng-container>
+  <router-outlet></router-outlet>
+<!--  <ng-container [ngSwitch]="view">-->
+<!--    <app-courses *ngSwitchCase="'courses'"></app-courses>-->
+<!--    <app-course-form *ngSwitchCase="'editCourse'"></app-course-form>-->
+<!--  </ng-container>-->
 </div>
 
 
