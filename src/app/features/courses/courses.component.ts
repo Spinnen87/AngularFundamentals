@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CoursesStoreService} from "../../services/courses-store/courses-store.service";
-import {Course} from "../../models/courses-api-results";
+import {UserStoreService} from "../../user/services/user-store/user-store.service";
 
 @Component({
   selector: 'app-courses',
@@ -8,19 +8,23 @@ import {Course} from "../../models/courses-api-results";
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit{
-  courses: Course[] | [] = [];
+  courses = this.coursesStoreService.courses$;
+  isAdmin: boolean = false;
 
   constructor(
-    private coursesStoreService: CoursesStoreService
+    private coursesStoreService: CoursesStoreService,
+    private userStoreService: UserStoreService
   ) {}
 
   ngOnInit() {
-    this.coursesStoreService.getAll().subscribe((res) => {
-      this.courses = res.result;
+    this.userStoreService.isAdmin$.subscribe((res) => {
+      this.isAdmin = res;
     })
+    this.coursesStoreService.getAll().subscribe()
   }
 
   deleteItem(id: string) {
+    this.coursesStoreService.deleteCourse(id).subscribe();
   }
 
 }

@@ -1,2 +1,2 @@
-<app-search placeholder="Input search" *ngIf="courses.length"></app-search>
-<app-course-list [courses]="courses" [editable]="true" (deleteCourse)="deleteItem($event)"></app-course-list>
+<app-search placeholder="Input search" *ngIf="(courses | async)?.length"></app-search>
+<app-course-list [courses]="courses | async" [editable]="isAdmin" (deleteCourse)="deleteItem($event)"></app-course-list>

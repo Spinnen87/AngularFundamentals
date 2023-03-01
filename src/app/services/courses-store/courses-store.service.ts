@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CoursesService} from "../courses/courses.service";
-import {BehaviorSubject} from "rxjs";
-import {tap} from 'rxjs/operators';
+import {BehaviorSubject, filter} from "rxjs";
+import {switchMap, tap} from 'rxjs/operators';
 import {Course, CreateCourse} from "../../models/courses-api-results";
 
 @Injectable({
@@ -16,13 +16,8 @@ export class CoursesStoreService {
 
   constructor(private coursesService: CoursesService) { }
 
-
-  getAll(){
-    if(!this.isLoading$$.getValue()){
-      this.isLoading$$.next(true);
-    }
-
-   return  this.coursesService.getAll().pipe(
+  private getAllCourses(){
+    return this.coursesService.getAll().pipe(
       tap(
         data => {
           if(data.successful){
@@ -34,40 +29,29 @@ export class CoursesStoreService {
     );
   }
 
+  getAll(){
+    this.isLoading$$.next(true);
+    return  this.getAllCourses();
+  }
+
   createCourse(course: CreateCourse){
     this.isLoading$$.next(true);
     return this.coursesService.createCourse(course).pipe(
-      tap(data => {
-        if(data.successful){
-          this.getAll();
-        }
-      })
+      filter(data => data.successful),
+      switchMap( () =>  this.getAllCourses())
     )
   }
 
   getCourse(id: string){
     this.isLoading$$.next(true);
-    return this.coursesService.getCourse(id).pipe(
-      tap(
-        data => {
-          if(data.successful){
-            console.log('course data ', data.result)
-          }
-          this.isLoading$$.next(false);
-        })
-      )
+    return this.coursesService.getCourse(id).pipe(tap(() => { this.isLoading$$.next(false) }));
   }
 
   editCourse(id: string, course: Course){
     this.isLoading$$.next(true);
     return this.coursesService.editCourse(id, course).pipe(
-      tap(
-        data => {
-          if(data.successful){
-            this.getAll();
-          }
-        }
-      )
+      filter(data => data.successful),
+      switchMap( () =>  this.getAllCourses())
     )
   }
 
@@ -75,13 +59,8 @@ export class CoursesStoreService {
   deleteCourse(id: string){
     this.isLoading$$.next(true);
     return this.coursesService.deleteCourse(id).pipe(
-      tap(
-        data => {
-          if(data.successful){
-            this.getAll();
-          }
-        }
-      )
+      filter(data => data.successful),
+      switchMap( () =>  this.getAllCourses())
     );
   }
 }

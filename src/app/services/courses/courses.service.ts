@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Course, CourseApiResult, CoursesApiResults, CreateCourse} from "../../models/courses-api-results";
 import {ApiResult} from "../../models/apiResult";
+import {SessionStorageService} from "../../auth/services/session-storage/session-storage.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private sessionStorageService: SessionStorageService
+  ) { }
 
   getAll() {
     return this.http.get<CoursesApiResults>(`${environment.apiURL}/courses/all`);
@@ -30,7 +34,11 @@ export class CoursesService {
   }
 
   deleteCourse(id: string){
-    return this.http.delete<ApiResult<string>>(`${environment.apiURL}/courses/${id}`);
+    const authorization = this.sessionStorageService.getToken();
+
+    const headers = new HttpHeaders()
+      .set('authorization', `Bearer ${authorization}`);
+    return this.http.delete<ApiResult<string>>(`${environment.apiURL}/courses/${id}`, {headers});
   }
 
 }
