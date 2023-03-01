@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, tap} from 'rxjs';
 import {HttpClient} from "@angular/common/http";
 import {SessionStorageService} from "../session-storage/session-storage.service";
-import { User } from '../../models/user';
-import {LoginResult, RegisterResult} from "../../models/authApiResults";
+import { User } from '../../../models/user';
+import {LoginResult, RegisterResult} from "../../../models/authApiResults";
 import { environment} from "../../../../environments/environment";
 
 @Injectable({

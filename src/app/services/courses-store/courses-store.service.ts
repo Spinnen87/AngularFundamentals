@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {CoursesService} from "../courses/courses.service";
 import {BehaviorSubject} from "rxjs";
-import {Course, CreateCourse} from "../../auth/models/courses-api-results";
+import {Course, CreateCourse} from "../../models/courses-api-results";
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Course, CourseApiResult, CoursesApiResults, CreateCourse} from "../../auth/models/courses-api-results";
-import {ApiResult} from "../../auth/models/apiResult";
+import {Course, CourseApiResult, CoursesApiResults, CreateCourse} from "../../models/courses-api-results";
+import {ApiResult} from "../../models/apiResult";
 
 @Injectable({
   providedIn: 'root'
