@@ -4,6 +4,7 @@ import {CoursesComponent} from "./courses.component";
 import {AddCourseComponent} from "./components/add-course/add-course.component";
 import {CourseComponent} from "./components/course/course.component";
 import {CourseFormComponent} from "../../shared/components";
+import {AdminGuard} from "../../user/guards/admin/admin.guard";
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddCourseComponent,
+        canActivate: [AdminGuard],
       },
       {
         path: ':id',
@@ -23,7 +25,8 @@ const routes: Routes = [
       },
       {
         path: 'edit/:id',
-        component: CourseFormComponent
+        component: CourseFormComponent,
+        canActivate: [AdminGuard],
       }
     ]
   }

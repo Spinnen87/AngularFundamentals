@@ -10,6 +10,9 @@ import {AuthorizedGuard} from "./auth/guards/authorized.guard";
 import {NotAuthorizedGuard} from "./auth/guards/not-authorized.guard";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {TokenInterceptor} from "./auth/interceptors/token.interceptor";
+import {CoursesService} from "./services/courses/courses.service";
+import {CoursesStoreService} from "./services/courses-store/courses-store.service";
+import {UserModule} from "./user/user.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import {TokenInterceptor} from "./auth/interceptors/token.interceptor";
       FormsModule,
       ReactiveFormsModule,
       AppRoutingModule,
-      AuthModule
+      AuthModule,
+      UserModule
   ],
   providers: [
     AuthorizedGuard,
@@ -31,7 +35,9 @@ import {TokenInterceptor} from "./auth/interceptors/token.interceptor";
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    CoursesService,
+    CoursesStoreService
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
