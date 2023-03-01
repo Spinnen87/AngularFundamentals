@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {Location} from '@angular/common';
 import {CoursesStoreService} from "../../../../services/courses-store/courses-store.service";
 import {Course} from "../../../../models/courses-api-results";
 
@@ -14,6 +15,7 @@ export class CourseComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private coursesStoreService: CoursesStoreService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class CourseComponent implements OnInit{
         this.course = data.result;
       });
     }
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 

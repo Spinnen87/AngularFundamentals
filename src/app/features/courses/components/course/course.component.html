@@ -1,2 +1,15 @@
-<p>CourseComponent works!</p>
-<p>{{course | json}}</p>
+<div class="title">{{course?.title}}</div>
+<div class="course-card">
+  <div class="course-card__description">
+    {{course?.description}}
+  </div>
+  <div class="course-card__info">
+      <div><b>ID: </b>{{course?.id}}</div>
+      <div><b>Duration: </b>{{course?.duration | durationPipe}} hours</div>
+      <div><b>Created: </b>{{(course?.creationDate || '') | creationDatePipe}}</div>
+      <div><b>Authors: </b>{{course?.authors}}</div>
+  </div>
+</div>
+<div class="navigation-block">
+  <app-button caption="go back" (click)="goBack()"></app-button>
+</div>
