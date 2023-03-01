@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Course} from "../../../models/courses-api-results";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-course-card',
@@ -9,4 +10,11 @@ import {Course} from "../../../models/courses-api-results";
 export class CourseCardComponent{
   @Input() card!: Course;
   @Input() editable: boolean = false;
+
+  constructor(private router: Router) {
+  }
+
+  goToCoursePage(){
+    this.router.navigate([`/courses/${this.card.id}`])
+  }
 }
