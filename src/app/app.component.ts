@@ -1,26 +1,43 @@
-import { Component } from '@angular/core';
-
-type View = 'login' | 'courses' | 'registration' | 'editCourse';
+import {Component, OnInit} from '@angular/core';
+import {UserStoreService} from "./user/services/user-store/user-store.service";
+import {Router} from "@angular/router";
+import {AuthService} from "./auth/services/auth/auth.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Angular Fundamentals';
-  isShowConfirmModal:boolean = false;
-  view: View = 'editCourse';
+  userName = '';
+  isAuthorized = false;
 
-  showConfirmModal(){
-    this.isShowConfirmModal = !this.isShowConfirmModal;
+  constructor(
+    private userStoreService: UserStoreService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.authService.isAuthorized$.subscribe(res => {
+      this.isAuthorized = res.valueOf();
+      this.userStoreService.getUser().subscribe();
+    })
+    this.userStoreService.name$.subscribe(name => {
+      this.userName = name.valueOf();
+    })
   }
 
-  inputChange(data: boolean) {
-    console.log('Modal data results ', data)
+  singUp(){
+    this.router.navigate(['/registration']);
   }
 
-  changeView(v: View) {
-    this.view = v;
+
+  logout(){
+    this.authService.logout().subscribe(() => {
+      this.router.navigate([this.authService.getLoginUrl()]);
+    });
   }
+
 }

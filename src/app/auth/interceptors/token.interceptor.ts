@@ -19,7 +19,6 @@ export class TokenInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log('request -', request);
     return next.handle(request).pipe(
       catchError((err) => {
           if (err instanceof HttpErrorResponse && err.status == 401) {

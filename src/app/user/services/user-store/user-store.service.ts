@@ -16,9 +16,9 @@ export class UserStoreService {
   constructor(private userService: UserService) { }
 
   getUser(){
-    this.userService.getUser().pipe(
+   return  this.userService.getUser().pipe(
       tap( res => {
-        if(res.successful){
+        if(res?.successful){
           const {name, role} = res.result;
 
           this.name$$.next(name);
@@ -27,7 +27,12 @@ export class UserStoreService {
             this.isAdmin$$.next(true);
           }
         }
-      })
+      },
+        () => {
+          this.name$$.next('');
+          this.isAdmin$$.next(false);
+        }
+        )
     )
   }
 

@@ -22,8 +22,8 @@ export class AuthService {
       .pipe(
         tap(res => {
           if(res.successful) {
-            console.log('Auth is OK');
-            this.sessionStorageService.setToken(res.result);
+            const token = res.result.replace('Bearer ', '');
+            this.sessionStorageService.setToken(token);
             this.isAuthorized$$.next(true);
           } else {
             console.log('Auth is failed');
@@ -35,15 +35,13 @@ export class AuthService {
     const authorization = this.sessionStorageService.getToken();
 
     const headers = new HttpHeaders()
-      .set('authorization', authorization || '');
+      .set('authorization', `Bearer ${authorization}`);
 
-    return this.http.delete<{successful: boolean}>(`${environment.apiURL}/logout`, {headers})
+    return this.http.delete(`${environment.apiURL}/logout`, {headers})
       .pipe(
-        tap(res => {
-          if (res.successful){
+        tap(() => {
             this.sessionStorageService.deleteToken();
             this.isAuthorized$$.next(false);
-          }
         })
       );
   }

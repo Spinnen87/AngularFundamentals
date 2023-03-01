@@ -1,26 +1,12 @@
 <div class="header">
   <app-header>
-    <div (click)="changeView('courses')">Courses</div>
-    <app-button icon="user" caption="Sing In" (click)="changeView('login')"></app-button>
-    <app-button icon="user" caption="Sing up" (click)="changeView('registration')"></app-button>
-    <app-button icon="question" (click)="showConfirmModal()"></app-button>
+    {{userName}}
+    <app-button caption="Sing up" (click)="singUp()" *ngIf="!isAuthorized"></app-button>
+    <app-button caption="Logout" (click)="logout()" *ngIf="isAuthorized"></app-button>
   </app-header>
 </div>
 
 <div class="container">
   <router-outlet></router-outlet>
-<!--  <ng-container [ngSwitch]="view">-->
-<!--    <app-courses *ngSwitchCase="'courses'"></app-courses>-->
-<!--    <app-course-form *ngSwitchCase="'editCourse'"></app-course-form>-->
-<!--  </ng-container>-->
 </div>
 
-
-<app-modal
-  [(isVisible)]="isShowConfirmModal"
-  (outputResult)="inputChange($event)"
-  cancelButtonText="Cancel"
-  message="Are you sure?"
-  okButtonText="Ok"
-  title="Test confirm Modal"
-></app-modal>
