@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Card} from "../../../../models/card";
+import {Course} from "../../../../models/courses-api-results";
 
 @Component({
   selector: 'app-course-list',
@@ -7,7 +7,7 @@ import {Card} from "../../../../models/card";
   styleUrls: ['./course-list.component.scss']
 })
 export class CourseListComponent {
-  @Input() courses: Card[] | undefined;
+  @Input() courses: Course[] | null = null;
   @Input() editable: boolean = false;
   @Output() deleteCourse = new EventEmitter<string>()
 

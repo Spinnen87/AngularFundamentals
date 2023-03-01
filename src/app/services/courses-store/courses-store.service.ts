@@ -22,7 +22,7 @@ export class CoursesStoreService {
       this.isLoading$$.next(true);
     }
 
-    this.coursesService.getAll().pipe(
+   return  this.coursesService.getAll().pipe(
       tap(
         data => {
           if(data.successful){
@@ -36,7 +36,7 @@ export class CoursesStoreService {
 
   createCourse(course: CreateCourse){
     this.isLoading$$.next(true);
-    this.coursesService.createCourse(course).pipe(
+    return this.coursesService.createCourse(course).pipe(
       tap(data => {
         if(data.successful){
           this.getAll();
@@ -47,7 +47,7 @@ export class CoursesStoreService {
 
   getCourse(id: string){
     this.isLoading$$.next(true);
-    this.coursesService.getCourse(id).pipe(
+    return this.coursesService.getCourse(id).pipe(
       tap(
         data => {
           if(data.successful){
@@ -60,7 +60,7 @@ export class CoursesStoreService {
 
   editCourse(id: string, course: Course){
     this.isLoading$$.next(true);
-    this.coursesService.editCourse(id, course).pipe(
+    return this.coursesService.editCourse(id, course).pipe(
       tap(
         data => {
           if(data.successful){
@@ -74,7 +74,7 @@ export class CoursesStoreService {
 
   deleteCourse(id: string){
     this.isLoading$$.next(true);
-    this.coursesService.deleteCourse(id).pipe(
+    return this.coursesService.deleteCourse(id).pipe(
       tap(
         data => {
           if(data.successful){

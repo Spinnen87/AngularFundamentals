@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Card} from "../../../models/card";
+import {Course} from "../../../models/courses-api-results";
 
 @Component({
   selector: 'app-course-card',
@@ -7,6 +7,6 @@ import {Card} from "../../../models/card";
   styleUrls: ['./course-card.component.scss']
 })
 export class CourseCardComponent{
-  @Input() card!: Card;
+  @Input() card!: Course;
   @Input() editable: boolean = false;
 }
