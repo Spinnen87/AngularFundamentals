@@ -10,6 +10,8 @@ import {UserStoreService} from "../../user/services/user-store/user-store.servic
 export class CoursesComponent implements OnInit{
   courses = this.coursesStoreService.courses$;
   isAdmin: boolean = false;
+  isShowConfirmModal = false;
+  deletedId: string | null = null;
 
   constructor(
     private coursesStoreService: CoursesStoreService,
@@ -24,7 +26,16 @@ export class CoursesComponent implements OnInit{
   }
 
   deleteItem(id: string) {
-    this.coursesStoreService.deleteCourse(id).subscribe();
+    this.isShowConfirmModal = true;
+    this.deletedId = id;
+  }
+
+  confirmedDelete(confirm: boolean){
+    if(confirm && this.deletedId){
+      this.coursesStoreService.deleteCourse(this.deletedId).subscribe();
+    }
+
+    this.deletedId = null;
   }
 
 }

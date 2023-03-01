@@ -1,2 +1,11 @@
 <app-search placeholder="Input search" *ngIf="(courses | async)?.length"></app-search>
 <app-course-list [courses]="courses | async" [editable]="isAdmin" (deleteCourse)="deleteItem($event)"></app-course-list>
+
+<app-modal
+  [(isVisible)]="isShowConfirmModal"
+  (outputResult)="confirmedDelete($event)"
+  cancelButtonText="Cancel"
+  message="Are you sure?"
+  okButtonText="Ok"
+  [title]="'Delete course: ' + deletedId"
+></app-modal>
