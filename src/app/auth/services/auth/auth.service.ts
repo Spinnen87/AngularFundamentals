@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, tap} from 'rxjs';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {SessionStorageService} from "../session-storage/session-storage.service";
 import { User } from '../../../models/user';
 import {LoginResult, RegisterResult} from "../../../models/authApiResults";
@@ -33,7 +33,11 @@ export class AuthService {
 
   logout(){
     const authorization = this.sessionStorageService.getToken();
-    this.http.delete<{successful: boolean}>(`${environment.apiURL}/logout`, {body: authorization})
+
+    const headers = new HttpHeaders()
+      .set('authorization', authorization || '');
+
+    return this.http.delete<{successful: boolean}>(`${environment.apiURL}/logout`, {headers})
       .pipe(
         tap(res => {
           if (res.successful){
