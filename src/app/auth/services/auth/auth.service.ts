@@ -31,7 +31,8 @@ export class AuthService {
     }));
   }
 
-  logout(authorization: string){
+  logout(){
+    const authorization = this.sessionStorageService.getToken();
     this.http.delete<{successful: boolean}>(`${environment.apiURL}/logout`, {body: authorization})
       .pipe(
         tap(res => {

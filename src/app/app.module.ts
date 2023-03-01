@@ -8,6 +8,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {AuthModule} from "./auth/auth.module";
 import {AuthorizedGuard} from "./auth/guards/authorized.guard";
 import {NotAuthorizedGuard} from "./auth/guards/not-authorized.guard";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {TokenInterceptor} from "./auth/interceptors/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,12 @@ import {NotAuthorizedGuard} from "./auth/guards/not-authorized.guard";
   ],
   providers: [
     AuthorizedGuard,
-    NotAuthorizedGuard
+    NotAuthorizedGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
