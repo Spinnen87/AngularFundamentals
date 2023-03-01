@@ -12,3 +12,5 @@ export interface Course {
 export interface CoursesApiResults extends ApiResult<Course[]>{}
 
 export interface CourseApiResult extends ApiResult<Course>{}
+
+export interface CreateCourse extends Omit<Course, 'id'>{}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Course, CourseApiResult, CoursesApiResults} from "../../auth/models/courses-api-results";
+import {Course, CourseApiResult, CoursesApiResults, CreateCourse} from "../../auth/models/courses-api-results";
 import {ApiResult} from "../../auth/models/apiResult";
 
 @Injectable({
@@ -15,7 +15,7 @@ export class CoursesService {
     return this.http.get<CoursesApiResults>(`${environment.apiURL}/courses/all`);
   }
 
-  createCourse(course: Omit<Course, 'id'>){
+  createCourse(course: CreateCourse){
     return this.http.post<CourseApiResult>(`${environment.apiURL}/courses/add`, course);
   }
 
