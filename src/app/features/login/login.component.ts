@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {AuthService} from "../../auth/services/auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,13 @@ export class LoginComponent {
   userEmail: string = '';
   userPassword: string = '';
 
+  constructor(private auth: AuthService) {
+  }
+
   onFormSubmit(form: NgForm){
-      console.log('formData', JSON.stringify(form.value, null, 2))
+    this.auth.login(form.value).subscribe(() => {
+      console.log('User is logged in')
+    });
   }
 
 
