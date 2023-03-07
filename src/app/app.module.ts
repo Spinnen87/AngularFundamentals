@@ -13,6 +13,9 @@ import {TokenInterceptor} from "./auth/interceptors/token.interceptor";
 import {CoursesService} from "./services/courses/courses.service";
 import {CoursesStoreService} from "./services/courses-store/courses-store.service";
 import {UserModule} from "./user/user.module";
+import { StoreModule } from '@ngrx/store';
+import {effects, reducers } from './store';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import {UserModule} from "./user/user.module";
       ReactiveFormsModule,
       AppRoutingModule,
       AuthModule,
-      UserModule
+      UserModule,
+      StoreModule.forRoot(reducers),
+      EffectsModule.forRoot(effects)
   ],
   providers: [
     AuthorizedGuard,
