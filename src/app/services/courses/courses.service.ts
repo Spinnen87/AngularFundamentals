@@ -23,11 +23,9 @@ export class CoursesService {
     return this.http.post<CourseApiResult>(`${environment.apiURL}/courses/add`, course);
   }
 
-
   getCourse(id: string){
     return this.http.get<CourseApiResult>(`${environment.apiURL}/courses/${id}`);
   }
-
 
   editCourse(id: string, course: Course){
     return this.http.put<CourseApiResult>(`${environment.apiURL}/courses/${id}`, course);

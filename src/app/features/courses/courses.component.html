@@ -1,5 +1,13 @@
-<app-search placeholder="Input search" *ngIf="(courses | async)?.length"></app-search>
-<app-course-list [courses]="courses | async" [editable]="isAdmin" (deleteCourse)="deleteItem($event)"></app-course-list>
+<app-search
+  *ngIf="(courses$ | async)?.length"
+  placeholder="Input search"
+></app-search>
+
+<app-course-list
+  [courses]="courses$ | async"
+  [editable]="isAdmin"
+  (deleteCourse)="deleteItem($event)"
+></app-course-list>
 
 <app-modal
   [(isVisible)]="isShowConfirmModal"

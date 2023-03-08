@@ -34,7 +34,10 @@ export class CoursesEffects {
 
   getAll$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(requestAllCourses),
+      ofType(
+        requestAllCourses,
+        requestDeleteCourseSuccess
+      ),
       mergeMap(() => this.coursesService.getAll()
         .pipe(
           filter(res => res.successful),
@@ -101,7 +104,11 @@ export class CoursesEffects {
 
   redirectToTheCoursesPage$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(requestCreateCourseSuccess, requestEditCourseSuccess, requestSingleCourseSuccess),
+      ofType(
+        requestCreateCourseSuccess,
+        requestEditCourseSuccess,
+        requestSingleCourseSuccess
+      ),
       tap(({course}) => {
         this.router.navigate([`/courses/${course.id}`])
       })

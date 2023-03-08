@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CoursesStoreService} from "../../services/courses-store/courses-store.service";
 import {UserStoreService} from "../../user/services/user-store/user-store.service";
+import {CoursesStateFacade} from "../../store/courses/courses.facade";
 
 @Component({
   selector: 'app-courses',
@@ -8,13 +8,13 @@ import {UserStoreService} from "../../user/services/user-store/user-store.servic
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit{
-  courses = this.coursesStoreService.courses$;
+  courses$ = this.courseStateService.allCourses$;
   isAdmin: boolean = false;
   isShowConfirmModal = false;
   deletedId: string | null = null;
 
   constructor(
-    private coursesStoreService: CoursesStoreService,
+    private courseStateService: CoursesStateFacade,
     private userStoreService: UserStoreService
   ) {}
 
@@ -22,7 +22,7 @@ export class CoursesComponent implements OnInit{
     this.userStoreService.isAdmin$.subscribe((res) => {
       this.isAdmin = res;
     })
-    this.coursesStoreService.getAll().subscribe()
+    this.courseStateService.getAllCourses();
   }
 
   deleteItem(id: string) {
@@ -32,9 +32,8 @@ export class CoursesComponent implements OnInit{
 
   confirmedDelete(confirm: boolean){
     if(confirm && this.deletedId){
-      this.coursesStoreService.deleteCourse(this.deletedId).subscribe();
+      this.courseStateService.deleteCourse(this.deletedId);
     }
-
     this.deletedId = null;
   }
 

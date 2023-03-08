@@ -11,11 +11,12 @@ import {NotAuthorizedGuard} from "./auth/guards/not-authorized.guard";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {TokenInterceptor} from "./auth/interceptors/token.interceptor";
 import {CoursesService} from "./services/courses/courses.service";
-import {CoursesStoreService} from "./services/courses-store/courses-store.service";
 import {UserModule} from "./user/user.module";
 import { StoreModule } from '@ngrx/store';
 import {effects, reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,11 @@ import { EffectsModule } from '@ngrx/effects';
       AuthModule,
       UserModule,
       StoreModule.forRoot(reducers),
-      EffectsModule.forRoot(effects)
+      EffectsModule.forRoot(effects),
+      StoreDevtoolsModule.instrument({
+        maxAge: 25,
+        logOnly: environment.production,
+      }),
   ],
   providers: [
     AuthorizedGuard,
@@ -42,7 +47,6 @@ import { EffectsModule } from '@ngrx/effects';
       multi: true
     },
     CoursesService,
-    CoursesStoreService
   ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
