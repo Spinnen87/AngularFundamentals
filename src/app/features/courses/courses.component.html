@@ -1,3 +1,6 @@
+<div class="errorMessage" *ngIf="errorMessage$ | async">
+  {{errorMessage$ | async}}
+</div>
 <app-search
   placeholder="Input search"
   (handelSearch)="filterCourses($event)"

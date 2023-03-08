@@ -9,6 +9,7 @@ import {CoursesStateFacade} from "../../store/courses/courses.facade";
 })
 export class CoursesComponent implements OnInit{
   courses$ = this.courseStateService.allCourses$;
+  errorMessage$ = this.courseStateService.errorMessage$;
   isAdmin: boolean = false;
   isShowConfirmModal = false;
   deletedId: string | null = null;
