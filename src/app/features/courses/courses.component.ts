@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserStoreService} from "../../user/services/user-store/user-store.service";
 import {CoursesStateFacade} from "../../store/courses/courses.facade";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-courses',
@@ -16,7 +17,8 @@ export class CoursesComponent implements OnInit{
 
   constructor(
     private courseStateService: CoursesStateFacade,
-    private userStoreService: UserStoreService
+    private userStoreService: UserStoreService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -44,5 +46,9 @@ export class CoursesComponent implements OnInit{
     } else {
       this.courseStateService.getAllCourses();
     }
+  }
+
+  createNewCourse(){
+    this.router.navigate(['/courses/add'])
   }
 }

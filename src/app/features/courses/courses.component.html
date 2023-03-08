@@ -1,10 +1,14 @@
+<app-button caption="create course" (click)="createNewCourse()"></app-button>
+
 <div class="errorMessage" *ngIf="errorMessage$ | async">
   {{errorMessage$ | async}}
 </div>
-<app-search
-  placeholder="Input search"
-  (handelSearch)="filterCourses($event)"
-></app-search>
+
+  <app-search
+    placeholder="Input search"
+    (handelSearch)="filterCourses($event)"
+  ></app-search>
+
 
 <app-course-list
   [courses]="courses$ | async"
