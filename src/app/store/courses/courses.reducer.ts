@@ -38,7 +38,7 @@ const initialState: CoursesState = {
   errorMessage: ''
 }
 
-export const reducer = createReducer(initialState,
+export const coursesFeatureReducer = createReducer(initialState,
   on(requestAllCourses, (state) => ({ ...state })),
   on(requestAllCoursesSuccess, (state, {allCourses}) => ({ ...state, allCourses })),
   on(requestAllCoursesFail, (state) => ({ ...state })),
