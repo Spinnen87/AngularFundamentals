@@ -37,4 +37,11 @@ export class CoursesComponent implements OnInit{
     this.deletedId = null;
   }
 
+  filterCourses(title = ''){
+    if (title){
+      this.courseStateService.filteredCourses(title?.trim());
+    } else {
+      this.courseStateService.getAllCourses();
+    }
+  }
 }

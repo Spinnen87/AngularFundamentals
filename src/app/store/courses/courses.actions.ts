@@ -36,8 +36,8 @@ export const requestSingleCourse = createAction(CoursesActions.RequestSingleCour
 export const requestSingleCourseSuccess = createAction(CoursesActions.RequestSingleCourseSuccess, props<{course: Course}>());
 export const requestSingleCourseFail = createAction(CoursesActions.RequestSingleCourseFail);
 
-export const requestFilteredCourses = createAction(CoursesActions.RequestFilteredCourses);
-export const requestFilteredCoursesSuccess = createAction(CoursesActions.RequestFilteredCoursesSuccess);
+export const requestFilteredCourses = createAction(CoursesActions.RequestFilteredCourses, props<{title: string}>());
+export const requestFilteredCoursesSuccess = createAction(CoursesActions.RequestFilteredCoursesSuccess, props<{allCourses: Course[]}>());
 export const requestFilteredCoursesFail = createAction(CoursesActions.RequestFilteredCoursesFail);
 
 export const requestDeleteCourse = createAction(CoursesActions.RequestDeleteCourse, props<{ id: string }>());

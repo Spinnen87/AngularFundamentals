@@ -39,4 +39,8 @@ export class CoursesService {
     return this.http.delete<ApiResult<string>>(`${environment.apiURL}/courses/${id}`, {headers});
   }
 
+  filterCourses(title: string){
+    return this.http.get<CoursesApiResults>(`${environment.apiURL}/courses/filter`, {params: {title}});
+  }
+
 }

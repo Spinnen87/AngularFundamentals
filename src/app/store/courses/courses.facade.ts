@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
   requestAllCourses,
-  requestCreateCourse, requestDeleteCourse,
+  requestCreateCourse,
+  requestDeleteCourse,
   requestEditCourse,
+  requestFilteredCourses,
   requestSingleCourse,
 } from './courses.actions';
 import {CoursesState} from "./courses.reducer";
@@ -51,6 +53,8 @@ export class CoursesStateFacade {
     this.store.dispatch(requestDeleteCourse({id}))
   }
 
-
+  filteredCourses(title: string){
+    this.store.dispatch(requestFilteredCourses({title}))
+  }
 
 }

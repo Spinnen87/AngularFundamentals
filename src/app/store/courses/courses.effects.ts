@@ -19,6 +19,7 @@ import {
   requestCreateCourse,
   requestCreateCourseFail,
   requestCreateCourseSuccess,
+  requestFilteredCourses, requestFilteredCoursesSuccess, requestFilteredCoursesFail,
 } from "./courses.actions";
 import {Router} from "@angular/router";
 
@@ -44,6 +45,18 @@ export class CoursesEffects {
           map(({result}) => requestAllCoursesSuccess({allCourses: result})),
           catchError(() => of(requestAllCoursesFail()))
       ))
+    )
+  );
+
+  filteredCourses$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(requestFilteredCourses),
+        mergeMap(({title}) => this.coursesService.filterCourses(title)
+          .pipe(
+            map(({result}) => requestFilteredCoursesSuccess({allCourses: result})),
+            catchError(() => of(requestFilteredCoursesFail()))
+        )
+      )
     )
   );
 

@@ -1,6 +1,6 @@
 <app-search
-  *ngIf="(courses$ | async)?.length"
   placeholder="Input search"
+  (handelSearch)="filterCourses($event)"
 ></app-search>
 
 <app-course-list
