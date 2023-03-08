@@ -48,6 +48,6 @@ export const requestEditCourse = createAction(CoursesActions.RequestEditCourse, 
 export const requestEditCourseSuccess = createAction(CoursesActions.RequestEditCourseSuccess, props<{course: Course}>());
 export const requestEditCourseFail = createAction(CoursesActions.RequestEditCourseFail);
 
-export const requestCreateCourse = createAction(CoursesActions.RequestCreateCourse, props<CreateCourse>());
+export const requestCreateCourse = createAction(CoursesActions.RequestCreateCourse, props<{ course: CreateCourse }>());
 export const requestCreateCourseSuccess = createAction(CoursesActions.RequestCreateCourseSuccess, props<{course: Course}>());
 export const requestCreateCourseFail = createAction(CoursesActions.RequestCreateCourseFail);

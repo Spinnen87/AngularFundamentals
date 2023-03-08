@@ -102,7 +102,7 @@ export class CoursesEffects {
   createCourse$ = createEffect(() =>
     this.actions$.pipe(
       ofType(requestCreateCourse),
-      mergeMap((course) => this.coursesService.createCourse(course)
+      mergeMap(({course}) => this.coursesService.createCourse(course)
         .pipe(
           filter((res) => res.successful),
           map(({result}) => requestCreateCourseSuccess({course: result})),

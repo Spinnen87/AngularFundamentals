@@ -46,7 +46,7 @@ export class CoursesStateFacade {
   }
 
   createCourse(course: CreateCourse){
-    this.store.dispatch(requestCreateCourse(course))
+    this.store.dispatch(requestCreateCourse({course}))
   }
 
   deleteCourse(id: string){

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, Validators} from '@angular/forms';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./course-form.component.scss'],
 })
 export class CourseFormComponent {
+  @Output() submitForm = new EventEmitter();
 
   form = this.fb.group({
     title: ["", [
@@ -64,9 +65,8 @@ export class CourseFormComponent {
     this.authors.removeAt(index);
   }
 
-
   onFormSubmit(){
-    console.log(JSON.stringify(this.form.value, null, 2));
+    this.submitForm.emit(this.form.value);
   }
 
 }

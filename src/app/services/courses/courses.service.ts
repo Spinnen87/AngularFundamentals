@@ -20,7 +20,11 @@ export class CoursesService {
   }
 
   createCourse(course: CreateCourse){
-    return this.http.post<CourseApiResult>(`${environment.apiURL}/courses/add`, course);
+    const authorization = this.sessionStorageService.getToken();
+
+    const headers = new HttpHeaders()
+      .set('authorization', `Bearer ${authorization}`);
+    return this.http.post<CourseApiResult>(`${environment.apiURL}/courses/add`, course, {headers});
   }
 
   getCourse(id: string){
