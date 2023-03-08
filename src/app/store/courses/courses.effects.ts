@@ -63,9 +63,6 @@ export class CoursesEffects {
   getSpecificCourse$ = createEffect(() =>
     this.actions$.pipe(
       ofType(requestSingleCourse),
-      tap((p) => {
-        console.log('getSpecificCourse$ -', p)
-      }),
       mergeMap(({id}) => this.coursesService.getCourse(id)
         .pipe(
           filter(res => res.successful),
